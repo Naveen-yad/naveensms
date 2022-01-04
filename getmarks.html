@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <style>
+        table, tr, td {
+           border: 1px solid black;}
+      </style>
+       <script>
+
+        //3. for myform2 ( get mark) we write the validation code -->
+    function validationform(){
+              let g = document.forms["myform2"]["StudentID"].value;
+              let h = document.forms["myform2"]["Semester"].value;
+    
+             if(g.length!=8)
+             {
+               alert("student id must be 8 characters");
+               return false;
+             }
+             var obj2 = { 
+              "StudentID": g,
+              "Semester": h
+              };
+    
+           console.log (obj2);
+           $.ajax({
+           method: "post",
+           url: "http://Localhost:2000/getindividualList",
+           data: obj2 ,
+           success : (result) => {
+           console.log("1",result);
+           },
+           error : (error) => {
+           console.log("2",error);
+           }
+           });
+           }
+          </script>
+  
+      </head>
+
+      <title> student management system </title>
+      
+      <h2>REPORT</h2>
+      <boby> successfully getting the marks card
+        <table>
+        <tr>
+          <th>StudentID</th>
+          <th>Semester</th>
+        </tr>
+        <tr></tr>
+          </table>
+           
+               <form name="myform2" >
+
+<!-- action="getmarks.html" method="get" -->
+
+<label>StudentID:</label><input type="text" name="StudentID" placeholder="Enter student id" required="" >
+
+<label>Semester:</label>
+<select name="Semester">
+<option value="1st">1st</option>
+<option value="3rd">3rd</option>
+<option value="5th">5th</option>
+<option value="7th">7th</option>
+<option value="PassOut">passout</option>
+</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<!-- <input type="button" onclick="validationform()" value="Get my marks card" ><br><br> -->
+<!-- <button onclick="validationform()"> Get my marks card</button>    -->
+</form>
+      </boby>
+      </html>
