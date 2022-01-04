@@ -1,4 +1,3 @@
-naveen was a good member in the world
 const express = require("express");
 var mongoose = require("mongoose");
 const router = express.Router();
